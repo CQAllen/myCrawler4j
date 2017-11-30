@@ -34,7 +34,7 @@ public class MyCrawler extends WebCrawler {
 	public boolean shouldVisit(Page referringPage, WebURL url) {
 		String href = url.getURL().toLowerCase(); // 得到小写的url
 		return !FILTERS.matcher(href).matches() // 正则匹配，过滤掉我们不需要的后缀文件
-				&& href.startsWith("https://item.jd.com/"); // url必须是http://www.java1234.com/开头，规定站点
+				&& href.startsWith("http://jobs.51job.com"); // url必须是http://www.java1234.com/开头，规定站点
 		// return true;
 	}
 
@@ -56,12 +56,23 @@ public class MyCrawler extends WebCrawler {
 			Set<WebURL> links = htmlParseData.getOutgoingUrls(); // 获取页面输出链接
 			
 			Document document = Jsoup.parse(html);
-			System.out.println(document.select(".sku-name").get(0).text());
-			System.out.println(document.select(".summary-price .price"));
-			Iterator<Element> iterator= document.select(".quan-item").iterator();
+			System.out.println(document.select(".tHjob h1").get(0).text());
+			System.out.println(document.select(".tHjob strong").get(0).text());
+			System.out.println(document.select(".tHjob .cname").get(0).text());
+			System.out.println(document.select(".tHjob .msg.ltype").get(0).text());
+			
+			Iterator<Element> iterator= document.select(".tCompany_main .jtag .t1 span.sp4").iterator();
 			while(iterator.hasNext()) {
 				System.out.println(iterator.next().text());
 			}
+			
+			Iterator<Element> iterator2= document.select(".tCompany_main .jtag .t2 span").iterator();
+			while(iterator2.hasNext()) {
+				System.out.println(iterator2.next().text());
+			}
+			
+			System.out.println(document.select(".tBorderTop_box .bmsg.job_msg.inbox").get(0).text());
+			System.out.println(document.select(".tBorderTop_box .bmsg.inbox .fp").get(0).text());
 
 			System.out.println("纯文本长度: " + text.length());
 			System.out.println("html长度: " + html.length());

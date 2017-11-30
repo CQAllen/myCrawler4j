@@ -36,7 +36,7 @@ public class Controller {
 //        controller.addSeed("http://www.java1234.com/");
 //        controller.addSeed("http://www.java1234.com/a/kaiyuan/");
 //        controller.addSeed("http://www.java1234.com/a/bysj/");
-        controller.addSeed("https://list.jd.com/list.html?cat=9987,653,655");
+        controller.addSeed("http://search.51job.com/jobsearch/search_result.php?fromJs=1&jobarea=060000&keywordtype=2&lang=c&stype=2&postchannel=0000&fromType=1&confirmdate=9");
 
         /**
          * 启动爬虫，爬虫从此刻开始执行爬虫任务，根据以上配置
